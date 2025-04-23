@@ -106,3 +106,7 @@ dialog::backdrop {
     font-size: 0.85rem;
     right: 8px;
 }
+
+iframe div.Embed div.Header {
+    display: none;
+}
