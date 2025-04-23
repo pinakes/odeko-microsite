@@ -99,3 +99,9 @@ dialog::backdrop {
 .modal-ad {
     width: 100%;
 }
+#hours-status {
+    position: absolute;
+    top: 190px;
+    font-size: 0.85rem;
+    right: 8px;
+}
