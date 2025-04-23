@@ -1,4 +1,4 @@
-const API_BASE = 'https://script.google.com/macros/s/AKfycbyu9V9hIAGxII7voBTHDL8xnLaWEa60HCfH7Wzvr1_k4Ap280-Ve2KYp5dWMa-VO72X_g/exec';
+const API_BASE = 'https://script.google.com/macros/s/AKfycbz1covTzylHfsKN3V7d9HldUQQzdldd8Po79hxeedz3RoLqmjy9MUavdr_isthbxIWwHA/exec';
 
 
 // — HERO SECTION via JSONP —
@@ -34,6 +34,77 @@ function setupHero() {
     s.src = `${API_BASE}?section=Socials&callback=handleSocials`;
     document.head.appendChild(s);
   }
+
+  /* — ACTIONS LINKS via JSONP —
+  function setupActions() {
+    window.handleActions = actions => {
+        console.log('ACTIONS RAW:', actions);
+      const container = document.getElementById('actions-links');
+      actions.forEach(d => {
+        const a = document.createElement('a');
+        a.href        = d.content || d.url;  // whichever field you meant
+        a.textContent = d.name;
+        a.classList.add('action-btn');
+        a.style.backgroundColor= d.buttonColor;
+        container.appendChild(a);
+      });
+      delete window.handleActions;
+    };
+    const d = document.createElement('script');
+    d.src = `${API_BASE}?section=Actions&callback=handleActions`;
+    document.head.appendChild(d);
+  }*/
+    function setupActions() {
+        window.handleActions = actions => {
+            const container = document.getElementById('actions-links');
+            const modal     = document.getElementById('action-modal');
+            const titleEl   = document.getElementById('modal-title');
+            const bodyEl    = document.getElementById('modal-body');
+            const closeBtn  = document.getElementById('modal-close');
+            
+            actions.forEach(act => {
+            // create the link element
+            const a = document.createElement('a');
+            a.classList.add('action-btn');
+            a.style.backgroundColor= act.buttonColor;
+        
+            if (act.type === 'link') {
+                // a normal external link
+                a.href = act.url;
+                a.textContent = act.name;
+                a.setAttribute('target', '_blank');
+            }
+            else if (act.type === 'modal') {
+                // open the modal on click
+                a.href = '#';
+                a.textContent = act.name;
+                a.addEventListener('click', e => {
+                e.preventDefault();
+                titleEl.textContent = act.name;
+                bodyEl.textContent  = act.content || '';
+                modal.showModal();
+                });
+            }
+            else {
+                // fallback: just show the name
+                a.href = '#';
+                a.textContent = act.name;
+            }
+        
+            container.appendChild(a);
+            });
+        
+            // only need to wire this once:
+            closeBtn.addEventListener('click', () => modal.close());
+        
+            delete window.handleActions;
+        };
+        
+        const script = document.createElement('script');
+        script.src = `${API_BASE}?section=Actions&callback=handleActions`;
+        document.head.appendChild(script);
+        }
+      
   
   // — POSTS / UPDATES via JSONP —
   function setupPosts() {
@@ -64,6 +135,7 @@ function setupHero() {
   document.addEventListener('DOMContentLoaded', () => {
     setupHero();
     setupSocials();
+    setupActions();
     setupPosts();
     // Your Instagram embed block can go into the HTML directly.
   });

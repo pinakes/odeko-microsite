@@ -9,6 +9,10 @@ h2 {
     font-weight: 300;
     letter-spacing: 2px;
 }
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
 #heroSection {
     padding: 74px 12px 0 12px;
 }
@@ -24,6 +28,9 @@ h2 {
     border-radius: 100%;
     width: 160px;
     height: 160px;
+}
+#social-links {
+    margin: 24px 0;
 }
 #updates{
     padding: 12px;
@@ -41,14 +48,49 @@ h2 {
 .post span {
     font-weight: bold;
 }
-a.updates:link, a.updates:visited {
+a.updates:link, a.action-btn:link, a.updates:visited, a.action-btn:visited {
     display: inline-block;
     background: #000;
     padding: 8px 12px;
     border-radius: 8px;
     color: #fff;
     text-decoration: none;
+    margin-right: 8px;
 }
-a.updates:hover {
+a.action-btn:link, a.action-btn:visited {
+    font-size: 1.2em;
+    padding: 10px 18px;
+}
+a.updates:hover, a.action-btn:hover {
     background: #2e2e2e;
+}
+#modal-close {
+    display: inline-block;
+    background: #ffffff;
+    padding: 8px 12px;
+    border: #000;
+    border-radius: 8px;
+    color: #000000;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+/* Make the dialog’s backdrop dim */
+dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+}
+
+/* Center the content and give it some padding */
+#action-modal {
+    border: none;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+#action-modal menu {
+    padding: 0;
+    margin: 0;
 }

@@ -12,6 +12,7 @@
   <meta name="theme-color" content="#4b2e2a">-->
 </head>
 <body>
+	<div class="wrapper">
     <!-- HERO -->
     <header id="heroSection">
       <div id="hero"></div>
@@ -19,6 +20,7 @@
       <h1 id="title"></h1>
       <p id="subtitle"></p>
       <div id="social-links"></div>
+			<div id="actions-links"></div>
       <div id="meta">
         <span id="current-date"></span>
         <span id="weather"><img id="weather-icon"><span id="weather-text"></span></span>
@@ -35,6 +37,16 @@
       <h2>Latest News</h2>
       <div id="posts-container"></div>
     </section>
+	</div>
+	<dialog id="action-modal">
+		<form method="dialog" class="modal-content">
+			<h2 id="modal-title">Modal Title</h2>
+			<p id="modal-body">Modal body text goes here.</p>
+			<menu>
+				<button id="modal-close" value="close">Close</button>
+			</menu>
+		</form>
+	</dialog>
   
     <script src="scripts/script.js"></script>
   </body>
