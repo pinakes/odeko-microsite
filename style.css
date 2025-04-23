@@ -12,6 +12,7 @@ h2 {
 .wrapper {
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
 }
 #heroSection {
     padding: 74px 12px 0 12px;
